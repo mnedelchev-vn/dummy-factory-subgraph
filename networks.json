@@ -1,0 +1,8 @@
+{
+  "goerli": {
+    "DummyFactory": {
+      "address": "0x201e1c9925ab8f39e82358e8aa75f6910a72e81a",
+      "startBlock": 9631200
+    }
+  }
+}
