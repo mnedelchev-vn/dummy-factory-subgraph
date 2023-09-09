@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: DummyFactory
@@ -18,8 +18,8 @@ dataSources:
         - User
       abis:
         - name: DummyFactory
-          file: ./abis/DummyFactory.json
+          file: DummyFactory/abis/DummyFactory.json
       eventHandlers:
         - event: ProxyCreation(address,address)
           handler: handleProxyCreation
-      file: ./src/dummy-factory.ts
+      file: DummyFactory/DummyFactory.wasm

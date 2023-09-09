@@ -1,16 +1,24 @@
-import { ProxyCreation as ProxyCreationEvent } from "../generated/DummyFactory/DummyFactory"
-import { ProxyCreation } from "../generated/schema"
+import { 
+    ProxyCreation as ProxyCreationEvent
+} from "../generated/DummyFactory/DummyFactory"
+
+import {
+    ProxyCreation, User
+} from '../generated/schema'
 
 export function handleProxyCreation(event: ProxyCreationEvent): void {
-  let entity = new ProxyCreation(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity._creator = event.params._creator
-  entity._proxy = event.params._proxy
+    let proxyCreation = new ProxyCreation(event.params._proxy.toHexString())
+    proxyCreation.creator = event.params._creator.toHexString()
+    proxyCreation.blockNumber = event.block.number
+    proxyCreation.blockTimestamp = event.block.timestamp
+    proxyCreation.transactionHash = event.transaction.hash
+    proxyCreation.gasLimit = event.transaction.gasLimit
+    proxyCreation.gasPrice = event.transaction.gasPrice
+    proxyCreation.save()
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
+    let user = User.load(event.params._creator.toHexString())
+    if (!user) {
+        user = new User(event.params._creator.toHexString())
+        user.save()
+    }
 }
