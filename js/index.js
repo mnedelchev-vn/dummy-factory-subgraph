@@ -6,7 +6,7 @@ async function init() {
     const graphQuery = `
     {
         proxyCreations(
-              orderBy: blockNumber
+            orderBy: blockNumber
         ) {
             id
             blockNumber
