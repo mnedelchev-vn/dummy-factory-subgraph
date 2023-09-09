@@ -5,7 +5,7 @@
 * ```node js/index.js``` - send query and read data from the subgraph.
     
 ### PURPOSE:
-This is a **DEMO** Subgraph project deployed on Goerli testnet just to test the functionality of subgraph crawling, because the default event reading provided by web3.js or ethers.js is very limited when it comes to filtering the data and flexibility. Folder ```dummy-factory-contract``` contains dummy factory contract which deploys dummy proxy contracts. By the time new proxy is deployed a new event is fired on-chain (```event ProxyCreation(address creator, address proxy)```) and because we rely on Subgraph we don't have to mark the event parameters with the ```indexed``` keyword which will also save us some gas.
+This is a **DEMO** Subgraph project deployed on Goerli testnet just to test the functionality of subgraph crawling, because the default event reading provided by web3.js or ethers.js is very limited when it comes to filtering the data and flexibility. Folder ```dummy-factory-contract``` contains dummy factory contract which deploys dummy proxy contracts. By the time new proxy is deployed a new event is fired on-chain *(```event ProxyCreation(address creator, address proxy)```)* and because we rely on Subgraph we don't have to mark the event parameters with the ```indexed``` keyword which will also save us some gas.
 
 Thanks to Subgraph it's very easy to make relations between entities, sorting & filtering the data ( in our example that would be the proxy and the proxy creator ).
 
